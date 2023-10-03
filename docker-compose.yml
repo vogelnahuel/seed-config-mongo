@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  mongodb:
+    container_name: atenea_mongo
+    image: mongo:latest
+    command: mongod --port 27018
+    restart: unless-stopped
+    ports:
+      - '27018:27018'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongodb:/data/db
+
+volumes:
+  mongodb:
